@@ -3,7 +3,7 @@
 		<img :src=oneHourBanner.imgUrl alt="">
 		<div>
 			<ul>
-				<li v-for="itemTool in tool">
+				<li v-for="(itemTool,index) in tool" @click='topDetail(tool,index)'>
 					
 					<img :src=itemTool.imgUrl alt="">
 					
@@ -20,6 +20,26 @@ export default{
 		return{
 			oneHourBanner:{},
 			tool:{}	
+		}
+	},
+	methods:{
+		topDetail(tool,index){
+			for(var i in tool){
+				// console.log(tool[index])
+				var j = tool[index].text
+				// console.log(j)
+				// console.log(tool[i].text)
+				if(tool[i].text==j){
+					if(j=='热销排行'){
+						this.$router.push('/home/hot')
+					}
+					if(j=='全部分类'){
+						this.$router.push('/category')
+					}
+				}
+				
+			}
+
 		}
 	},
 	created(){

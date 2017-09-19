@@ -1,5 +1,6 @@
 <template>
 	<div id="Home">
+		<router-view></router-view>
 		<HomeTop></HomeTop>
 		<HomeBottom></HomeBottom>
 		<shopCar></shopCar>

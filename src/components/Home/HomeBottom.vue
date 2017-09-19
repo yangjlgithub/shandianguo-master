@@ -13,7 +13,6 @@
 						<span>
 							<span class="price">¥{{item.itemPrice | PriceChange}}</span>
 							<goodsChange></goodsChange>
-
 						</span>
 					</li>
 				</ul>
@@ -139,6 +138,10 @@ export default{
 					display: flex;
 					flex-direction: column;
 					background:white;
+					img{
+						width: 170.39px;
+						height: 170.39px;
+					}
 					span{
 						display: flex;
 						font-size:14px;	
@@ -151,6 +154,7 @@ export default{
 						-webkit-box-orient: vertical;
 						-webkit-line-clamp: 1;
 						overflow: hidden;
+						height: 20px;
 						a{
 							text-decoration: none;
 							color: black;

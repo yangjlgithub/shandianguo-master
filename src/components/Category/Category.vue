@@ -287,7 +287,7 @@ export default{
 						}
 						span.Box{
 							color: #827F7F;
-							font-size: 8px;
+							font-size: 10px;
 							display: -webkit-box;
 							-webkit-box-orient: vertical;
 							-webkit-line-clamp: 1;

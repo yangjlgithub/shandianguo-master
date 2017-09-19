@@ -4,7 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
-
+import store from './vuex/Store'
+import Icon from 'vue-svg-icon/Icon.vue';
+Vue.component('icon', Icon); 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
 if (true) {
@@ -17,6 +19,7 @@ if (true) {
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

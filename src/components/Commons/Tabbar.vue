@@ -35,6 +35,8 @@ export default{
 	methods:{
 		pushTo(path,index){
 			this.selectedIndex = index
+			// console.log(path)
+			this.$store.dispatch('UP_DATE_SELECTED_PATH',path)
 			this.$router.push(path)
 		}
 	}
