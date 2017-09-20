@@ -141,6 +141,8 @@ export default{
 					var mergeList=[]
 					for(var i in data){
 						// console.log(_this.catsList[i].catItemList)
+						console.log(data[i])
+						
 						var one =data[i].catItemList
 						for(var j in one){
 							mergeList.push(one[j])
