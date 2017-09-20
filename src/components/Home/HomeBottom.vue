@@ -4,7 +4,7 @@
 			<div v-for="bouItem in boutiqueCategory" class="contentList">
 				<img :src=bouItem.imgUrl alt="">
 				<ul class="dataBox">
-					<li v-for="item in bouItem.itemList">
+					<li v-for="item in bouItem.itemList" @click="goodsDetails(item.itemId)">
 						<img :src=item.imgUrl alt="">
 						<span class="drinkName">
 							<a href="">{{item.itemBrand}}</a>&nbsp;{{item.itemName}}
@@ -21,7 +21,7 @@
 		<div class="likes">
 			<div class="topText">{{recommendItem.topText}}</div>
 			<ul>
-				<li class="likeBox" v-for="item in recommendItem.itemList">
+				<li class="likeBox" v-for="item in recommendItem.itemList" @click="goodsDetails(item.itemId)">
 					<img :src=item.imgUrl alt="">
 					<span class="drinkName">
 						<a href="">{{item.itemBrand}}</a>&nbsp;{{item.itemName}}
@@ -39,11 +39,19 @@
 <script>
 import goodsChange from '@/components/Commons/goodsChange'
 import priceFliter from '@/components/Commons/priceFilter'
+
 export default{
 	data(){
 		return{
 			boutiqueCategory:{},
 			recommendItem:{}
+		}
+	},
+	methods:{
+		goodsDetails(id){
+			
+			this.$router.push({path:'/home/homeDetails',query: { itemId: id }})
+			
 		}
 	},
 	components:{
