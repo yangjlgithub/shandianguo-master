@@ -1,14 +1,20 @@
 <template>
 	<div id="shopCar">
 		<div>
-			<span>1</span>
+			<icon name="05采购-线性" :scale="2.5" ></icon>
+			
+			<span>{{showNum}}</span>
 		</div>
 	</div>
 </template>
 <script>
 
 export default{
-	
+	computed:{
+		showNum(){
+			return this.$store.state.goodsNum
+		}
+	}
 }
 </script>
 <style lang="scss" scoped>
@@ -23,8 +29,13 @@ export default{
 			border:1px solid #ccc;
 			background: white;
 			opacity: 0.8;
+			display: flex;
+			align-items:center;
+			justify-content: center;
 			span{
-				display: inline-block;
+				position:fixed;
+				bottom:94px;
+				right: 20px;
 				width: 16px;
 				height: 16px;
 				border-radius:8px;
@@ -33,10 +44,22 @@ export default{
 				text-align:center;
 				line-height: 16px;
 				font-size: 10px;
-				position:relative;
-				left:20px;
-				top:4px;
+
 			}
+			// span{
+			// 	display: inline-block;
+			// 	width: 16px;
+			// 	height: 16px;
+			// 	border-radius:8px;
+			// 	background:red;
+			// 	color: white;
+			// 	text-align:center;
+			// 	line-height: 16px;
+			// 	font-size: 10px;
+			// 	position:relative;
+			// 	left:20px;
+			// 	top:4px;
+			// }
 		}
 	}
 </style>

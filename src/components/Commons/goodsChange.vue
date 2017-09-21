@@ -1,15 +1,27 @@
 <template>
 	<div>
-		<span>－</span>
-		<span>1</span>
-		<span @click="change">＋</span>
+		<span @click="changeMin">－</span>
+		<span>{{num}}</span>
+		<span @click="changeMax">＋</span>
 	</div>
 </template>
 <script>
 export default{
+	data(){
+		return{
+			num:''
+		}
+	},
 	methods:{
-		change(){
-
+		changeMax(){
+			this.num++
+			console.log(this.num)
+			this.$store.dispatch('UP_DATE_GOODS_NUM',(this.num))
+		},
+		changeMin(){
+			if(this.num>0){
+				this.num--
+			}
 		}
 	}
 }

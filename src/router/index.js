@@ -11,6 +11,7 @@ import CategoryDetails from '@/components/Category/CategoryDetails/CategoryDetai
 
 import Order from '@/components/Order/Order'
 import Profile from '@/components/Profile/Profile'
+import UserInfo from '@/components/Profile/UserInfo/UserInfo'
 export default new Router({
   routes: [
   	{
@@ -47,7 +48,13 @@ export default new Router({
   	},
   	{
   		path:'/profile',
-  		component:Profile
+  		component:Profile,
+      children:[
+        {
+          path:'userInfo',
+          component:UserInfo
+        }
+      ]
   	}
   ]
 })

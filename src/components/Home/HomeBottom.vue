@@ -4,8 +4,8 @@
 			<div v-for="bouItem in boutiqueCategory" class="contentList">
 				<img :src=bouItem.imgUrl alt="">
 				<ul class="dataBox">
-					<li v-for="item in bouItem.itemList" @click="goodsDetails(item.itemId)">
-						<img :src=item.imgUrl alt="">
+					<li v-for="item in bouItem.itemList">
+						<img :src=item.imgUrl alt=""  @click="goodsDetails(item.itemId)">
 						<span class="drinkName">
 							<a href="">{{item.itemBrand}}</a>&nbsp;{{item.itemName}}
 						</span>
