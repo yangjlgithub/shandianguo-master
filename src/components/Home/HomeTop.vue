@@ -44,23 +44,23 @@ export default{
 	},
 	created(){
 		var _this = this;
-		this.$http.get('/api/HomeTop').then((response)=>{
-			response=response.data
-			if(response.errno==0){
-				response = response.data.extra.adv
-		    	var four = response.oneHourBanner;
-		    	_this.oneHourBanner = four['4']
-		    	_this.tool = response.tool  	
-			}
-		})
+		// this.$http.get('/api/HomeTop').then((response)=>{
+		// 	response=response.data
+		// 	if(response.errno==0){
+		// 		response = response.data.extra.adv
+		//     	var four = response.oneHourBanner;
+		//     	_this.oneHourBanner = four['4']
+		//     	_this.tool = response.tool  	
+		// 	}
+		// })
 
-	    // this.$http.get(window.apiAddress+'/api/home').then((response)=>{
-	    	// response = response.data.extra.adv
-	    	// var four = response.oneHourBanner;
-	    	// _this.oneHourBanner = four['4']
-	    	// _this.tool = response.tool
+	    this.$http.get(window.apiAddress+'/api/homeTop').then((response)=>{
+	    	response = response.data.extra.adv
+	    	var four = response.oneHourBanner;
+	    	_this.oneHourBanner = four['4']
+	    	_this.tool = response.tool
 	    	// console.log(_this.tool)	
-	    // })
+	    })
 	}
 }
 </script>

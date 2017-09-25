@@ -12,6 +12,8 @@ import CategoryDetails from '@/components/Category/CategoryDetails/CategoryDetai
 import Order from '@/components/Order/Order'
 import Profile from '@/components/Profile/Profile'
 import UserInfo from '@/components/Profile/UserInfo/UserInfo'
+
+import shopCarDetails from '@/components/Commons/shopCarDetails'
 export default new Router({
   routes: [
   	{
@@ -55,6 +57,10 @@ export default new Router({
           component:UserInfo
         }
       ]
-  	}
+  	},
+    {
+      path:'/shopcardetails',
+      component:shopCarDetails
+    }
   ]
 })

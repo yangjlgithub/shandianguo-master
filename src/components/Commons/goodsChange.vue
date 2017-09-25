@@ -1,15 +1,20 @@
 <template>
+
 	<div>
-		<span @click="changeMin">－</span>
+ 		<span @click="changeMin">－</span>
 		<span>{{num}}</span>
-		<span @click="changeMax">＋</span>
+		<span @click="changeMax()">＋</span>
 	</div>
 </template>
 <script>
+
+
+
 export default{
 	data(){
 		return{
-			num:''
+			num:'',
+
 		}
 	},
 	methods:{

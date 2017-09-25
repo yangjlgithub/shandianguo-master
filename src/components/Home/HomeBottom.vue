@@ -12,7 +12,13 @@
 						<span class="Box">{{item.property}}</span>
 						<span>
 							<span class="price">¥{{item.itemPrice | PriceChange}}</span>
-							<goodsChange></goodsChange>
+							<!-- <goodsChange></goodsChange> -->
+							<!-- <span @click="add(item)">1</span> -->
+							<span>
+								<span @click="min(item)">－</span>
+								<span><input style="width:10px;" type="text" :value="item.limitNum" v-model="item.limitNum"></span>
+								<span @click="add(item)">＋</span>
+							</span>
 						</span>
 					</li>
 				</ul>
@@ -44,7 +50,9 @@ export default{
 	data(){
 		return{
 			boutiqueCategory:{},
-			recommendItem:{}
+			recommendItem:{},
+			cart: new Set(),
+			cartArr: []
 		}
 	},
 	methods:{
@@ -52,6 +60,22 @@ export default{
 			
 			this.$router.push({path:'/home/homeDetails',query: { itemId: id }})
 			
+		},
+		add(item){
+			item.limitNum++;
+			var newObj = item;
+			this.cart.add(newObj);
+			this.cartArr = Array.from(this.cart);
+			this.$store.dispatch('UP_DATE_CAR_ARR',(this.cartArr))
+		},
+		min(item){
+			if(item.limitNum>=1){
+				item.limitNum--;
+				var newObj = item;
+				this.cart.add(newObj);
+				this.cartArr = Array.from(this.cart);
+				this.$store.dispatch('UP_DATE_CAR_ARR',(this.cartArr))
+			}
 		}
 	},
 	components:{
@@ -59,14 +83,19 @@ export default{
 	},
 	created(){
 		var _this = this;
-		this.$http.get('/api/HomeBottom').then((response)=>{
-			response=response.data;
-			if(response.errno==0){
-				response = response.data.extra.adv;
-				_this.boutiqueCategory = response.boutiqueCategory
-				_this.recommendItem = response.recommendItem['0']
-			}
-		})
+		// this.$http.get('/api/HomeBottom').then((response)=>{
+		// 	response=response.data;
+		// 	if(response.errno==0){
+		// 		response = response.data.extra.adv;
+		// 		_this.boutiqueCategory = response.boutiqueCategory
+		// 		_this.recommendItem = response.recommendItem['0']
+		// 	}
+		// })
+		this.$http.get(window.apiAddress+'/api/homeBottom').then((response)=>{
+	    	response = response.data.extra.adv;
+			_this.boutiqueCategory = response.boutiqueCategory
+			_this.recommendItem = response.recommendItem['0']
+	    })
 	},
 	filters:{
 		PriceChange(val){

@@ -1,18 +1,49 @@
 <template>
 	<div id="shopCar">
-		<div>
+		<div @click="shopCarDetails">
 			<icon name="05采购-线性" :scale="2.5" ></icon>
 			
-			<span>{{showNum}}</span>
+			<span v-show="gt">{{showNum}}</span>
 		</div>
 	</div>
 </template>
 <script>
 
 export default{
+	data(){
+		return{
+			gt:false,
+			shopCarArr:[]
+		}
+	},
+	methods:{
+		shopCarDetails(){
+			console.log()
+			this.$router.push({
+				path:'/shopcardetails',
+				query:{shopCarArr:(this.shopCarArr)}	
+			})
+		}
+	},
 	computed:{
 		showNum(){
-			return this.$store.state.goodsNum
+			var num=0;
+			var _this = this;
+			// console.log(this.$store.state.carArr)
+			var currentArr = _this.$store.state.carArr;
+			// console.log(currentArr)
+			_this.shopCarArr = currentArr
+			for(var obj of currentArr){
+				// console.log(obj)
+				num+= obj.limitNum
+			}
+			if(num>=1){
+				_this.gt=true
+			}else{
+				_this.gt=false
+			}
+			return num
+
 		}
 	}
 }
@@ -46,20 +77,7 @@ export default{
 				font-size: 10px;
 
 			}
-			// span{
-			// 	display: inline-block;
-			// 	width: 16px;
-			// 	height: 16px;
-			// 	border-radius:8px;
-			// 	background:red;
-			// 	color: white;
-			// 	text-align:center;
-			// 	line-height: 16px;
-			// 	font-size: 10px;
-			// 	position:relative;
-			// 	left:20px;
-			// 	top:4px;
-			// }
+			
 		}
 	}
 </style>

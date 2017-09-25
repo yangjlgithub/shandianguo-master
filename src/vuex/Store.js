@@ -5,7 +5,8 @@ import ProfileModule from '@/components/Profile/ProfileStore'
 export default new Vuex.Store({
 	state: {
 		selectedPath:'',
-		goodsNum:''		
+		goodsNum:'',
+		carArr:[]		
 	},
 	getters: {
 		getSelectedPath(state){
@@ -13,6 +14,9 @@ export default new Vuex.Store({
 		},
 		getGoodsNum(state){
 			return state.goodsNum;
+		},
+		getCarArr(state){
+			return state.carArr;
 		}
 	},
 	mutations: {
@@ -22,6 +26,9 @@ export default new Vuex.Store({
 		},
 		SET_GOODS_NUM(state,num){
 			state.goodsNum = num;
+		},
+		SET_CAR_ARR(state,arr){
+			state.carArr=arr;
 		}
 	},
 	actions: {
@@ -30,6 +37,9 @@ export default new Vuex.Store({
 		},
 		UP_DATE_GOODS_NUM({commit},num){
 			commit('SET_GOODS_NUM',num);
+		},
+		UP_DATE_CAR_ARR({commit},arr){
+			commit('SET_CAR_ARR',arr)
 		}
 	},
 	modules:{
